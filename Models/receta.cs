@@ -1,8 +1,8 @@
 public class receta 
 {
 public string nombreCocinero{get;set;}
-public datetime fechaDeNacimiento{get;set;}
-public string tipoComida{get;set}
+public DateTime fechaDeNacimiento{get;set;}
+public string tipoComida{get;set;}
 public int presupuesto{get;set;}
 public int cantidadPersonas{get;set;}
 
@@ -10,11 +10,11 @@ public int CalcularEdad(){
 int edad =  DateTime.Today.Year - fechaDeNacimiento.Year;
 if  (fechaDeNacimiento.Month > DateTime.Today.Month )
 {
-    edad-=;
+    edad = edad-1;
 } 
 if (fechaDeNacimiento.Month= DateTime.Today.Month && fechaDeNacimiento.Day > DateTime.Today.Day)
 {
-    edad-=;
+    edad = edad-1;
 }
 return edad;
 }
@@ -99,30 +99,30 @@ public string DeterminarDificultad(){
     string dificultad;
     if ((presupuesto < 3000)  && (cantidadPersonas>=1 && cantidadPersonas <= 3))
     {
-        dificultad = "Principiante"
+        dificultad = "Principiante";
         return dificultad;
     }
     if ((presupuesto < 3000)  && (cantidadPersonas>=4 && cantidadPersonas <= 7))
     {
-        dificultad = "intermedio"
+        dificultad = "intermedio";
         return dificultad;
     }if ((presupuesto > 3000 && presupuesto < 7000)  && (cantidadPersonas>=1 && cantidadPersonas <= 3))
     {
-        dificultad = "intermedio"
+        dificultad = "intermedio";
         return dificultad;
     }if ((presupuesto > 3000 && presupuesto < 7000) && (cantidadPersonas>=4))
     {
-        dificultad = "intermedio"
+        dificultad = "intermedio";
         return dificultad;
     }
 
     if ((presupuesto > 7000 ) && (cantidadPersonas>1 && cantidadPersonas<7))
     {
-        dificultad = "intermedio"
+        dificultad = "intermedio";
         return dificultad;
     }if ((presupuesto > 7000 ) && (cantidadPersonas>= 8))
     {
-        dificultad = "avanzado"
+        dificultad = "avanzado";
         return dificultad;
     }
 
@@ -151,5 +151,5 @@ public string GenerarSaludo(){
 
 
 
-}
+
 
