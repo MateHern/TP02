@@ -17,6 +17,18 @@ public class HomeController : Controller
     {
         return View();
     }
+     public IActionResult GenerarReceta(Receta receta)
+        {
+            ViewBag.Nombre          = receta.NombreCocinero;
+            ViewBag.Edad            = receta.CalcularEdad();
+            ViewBag.Plato           = receta.DeterminarPlato();
+            ViewBag.Tiempo          = receta.CalcularTiempo();
+            ViewBag.Dificultad      = receta.DeterminarDificultad();
+            ViewBag.CantidadPersonas = receta.CantidadPersonas;
+            ViewBag.Saludo          = receta.GenerarSaludo();
+
+            return View("Resultado");
+        }
 
     public IActionResult Privacy()
     {

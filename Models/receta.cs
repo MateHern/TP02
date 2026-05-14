@@ -6,17 +6,17 @@ public string tipoComida{get;set}
 public int presupuesto{get;set;}
 public int cantidadPersonas{get;set;}
 
-public int CalcularEdad(datetime fechaDeNacimientos){
+public int CalcularEdad(){
 int edad =  DateTime.Today.Year - fechaDeNacimiento.Year;
 if  (fechaDeNacimiento.Month > DateTime.Today.Month )
 {
-    edad-=
+    edad-=;
 } 
 if (fechaDeNacimiento.Month= DateTime.Today.Month && fechaDeNacimiento.Day > DateTime.Today.Day)
 {
-    edad-=
+    edad-=;
 }
-return edad
+return edad;
 }
 public string DeterminarPlato()
 {
@@ -82,22 +82,74 @@ public int CalcularTiempo()
         tiempoestimado = 10;
         return tiempoestimado;
     }
-    if (tipoComida == "Fria" && (cantidadPersonas>=2 && cantidadPersonas<=3))
+    if (tipoComida == "Fria" && (cantidadPersonas>=4 && cantidadPersonas<=7))
     {
         tiempoestimado= 20;
         return tiempoestimado;
     }
-    if (tipoComida == "Fria" && cantidadPersonas>=4 && cantidadPersonas<=7)
+    if (tipoComida == "Fria" && cantidadPersonas>=8)
     {
         tiempoestimado = 40;
-        return tiempoestimado;
-    }if (tipoComida == "Fria" && cantidadPersonas>=8)
-    {
-        tiempoestimado = 80;
         return tiempoestimado;
     }
 
 
 }
+public string DeterminarDificultad(){
+    string dificultad;
+    if ((presupuesto < 3000)  && (cantidadPersonas>=1 && cantidadPersonas <= 3))
+    {
+        dificultad = "Principiante"
+        return dificultad;
+    }
+    if ((presupuesto < 3000)  && (cantidadPersonas>=4 && cantidadPersonas <= 7))
+    {
+        dificultad = "intermedio"
+        return dificultad;
+    }if ((presupuesto > 3000 && presupuesto < 7000)  && (cantidadPersonas>=1 && cantidadPersonas <= 3))
+    {
+        dificultad = "intermedio"
+        return dificultad;
+    }if ((presupuesto > 3000 && presupuesto < 7000) && (cantidadPersonas>=4))
+    {
+        dificultad = "intermedio"
+        return dificultad;
+    }
+
+    if ((presupuesto > 7000 ) && (cantidadPersonas>1 && cantidadPersonas<7))
+    {
+        dificultad = "intermedio"
+        return dificultad;
+    }if ((presupuesto > 7000 ) && (cantidadPersonas>= 8))
+    {
+        dificultad = "avanzado"
+        return dificultad;
+    }
+
+
+   
+}
+public string GenerarSaludo(){
+    int horaActual= DateTime.Now.Hour;
+    if (horaActual >= 6 && horaActual < 12)
+    {
+        return "Buenos días ";
+    }
+    else if (horaActual >= 12 && horaActual < 20)
+    {
+        return "Buenas tardes";
+    }
+    else
+    {
+        return "Buenas noches";
+    }
+
+}
+
+}
+
+
+
+
 }
 
