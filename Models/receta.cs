@@ -1,155 +1,132 @@
-public class receta 
+namespace tp2.Models;
+
+public class Receta
 {
-public string nombreCocinero{get;set;}
-public DateTime fechaDeNacimiento{get;set;}
-public string tipoComida{get;set;}
-public int presupuesto{get;set;}
-public int cantidadPersonas{get;set;}
+    public string? NombreCocinero { get; set; }
+    public DateTime FechaDeNacimiento { get; set; }
+    public string? TipoComida { get; set; }
+    public int Presupuesto { get; set; }
+    public int CantidadPersonas { get; set; }
 
-public int CalcularEdad(){
-int edad =  DateTime.Today.Year - fechaDeNacimiento.Year;
-if  (fechaDeNacimiento.Month > DateTime.Today.Month )
-{
-    edad = edad-1;
-} 
-if (fechaDeNacimiento.Month= DateTime.Today.Month && fechaDeNacimiento.Day > DateTime.Today.Day)
-{
-    edad = edad-1;
+    public int CalcularEdad()
+    {
+        int edad = DateTime.Today.Year - FechaDeNacimiento.Year;
+        if (FechaDeNacimiento.Month > DateTime.Today.Month)
+        {
+            edad = edad - 1;
+        }
+        if (FechaDeNacimiento.Month == DateTime.Today.Month && FechaDeNacimiento.Day > DateTime.Today.Day)
+        {
+            edad = edad - 1;
+        }
+        return edad;
+    }
+
+    public string DeterminarPlato()
+    {
+        if (TipoComida == "Caliente" && Presupuesto < 3000)
+        {
+            return "Fideos con manteca";
+
+        }
+
+        if (TipoComida == "Caliente" && Presupuesto >= 3000 && Presupuesto <= 7000)
+        {
+            return "Arroz con verduras salteadas";
+        }
+        if (TipoComida == "Caliente" && Presupuesto > 7000)
+        {
+
+            return "Pollo al horno con guarnicion";
+        }
+        if (TipoComida == "Fría" && Presupuesto < 3000)
+        {
+            return "Ensalada simple";
+        }
+        if (TipoComida == "Fría" && Presupuesto >= 3000 && Presupuesto <= 7000)
+        {
+            return "Ensalada completa con proteina";
+        }
+        if (TipoComida == "Fría" && Presupuesto > 7000)
+        {
+            return "Tabla de fiambres y quesos";
+
+
+        }
+        return "Sin plato";
+    }
+
+    public int CalcularTiempo()
+    {
+        if (TipoComida == "Caliente" && CantidadPersonas <= 3)
+        {
+            return 20;
+        }
+        if (TipoComida == "Caliente" && CantidadPersonas >= 4 && CantidadPersonas <= 7)
+        {
+            return 40;
+        }
+        if (TipoComida == "Caliente" && CantidadPersonas >= 8)
+        {
+
+            return 80;
+        }
+
+        if (TipoComida == "Fría" && CantidadPersonas <= 3)
+        {
+            return 10;
+        }
+        if (TipoComida == "Fría" && CantidadPersonas >= 4 && CantidadPersonas <= 7)
+        {
+            return 20;
+        }
+        if (TipoComida == "Fría" && CantidadPersonas >= 8)
+        {
+            return 40;
+        }
+        return 0;
+    }
+
+    public string DeterminarDificultad()
+    {
+        if (Presupuesto < 3000 && CantidadPersonas <= 3)
+        {
+            return "Principiante";
+        }
+        if (Presupuesto < 3000 && CantidadPersonas >= 4)
+        {
+            return "Intermedio";
+        }
+        if (Presupuesto >= 3000 && Presupuesto <= 7000)
+        {
+            return "Intermedio";
+        }
+        if (Presupuesto > 7000 && CantidadPersonas <= 7)
+        {
+            return "Intermedio";
+        }
+        if (Presupuesto > 7000 && CantidadPersonas >= 8)
+        {
+            return "Avanzado";
+        }
+        return "Principiante";
+    }
+
+    public string GenerarSaludo()
+    {
+        int horaActual = DateTime.Now.Hour;
+        if (horaActual >= 6 && horaActual < 12)
+        {
+            return "Buenos días";
+        }
+        else if (horaActual >= 12 && horaActual < 20)
+        {
+            return "Buenas tardes";
+        }
+        else
+        {
+            
+            return "Buenas noches";
+        }
+    }
 }
-return edad;
-}
-public string DeterminarPlato()
-{
-    string plato;
-    if (tipoComida == "caliente" && presupuesto<3000)
-    {
-        plato = "Fideos Con Manteca";
-        return plato;
-    }
-    if (tipoComida == "caliente" && (presupuesto<7000 && presupuesto>3000))
-    {
-        plato = "Arroz con verduras salteadas";
-        return plato;
-    }
-    if (tipoComida == "caliente" && presupuesto>7000)
-    {
-        plato = "Pollo Al horno con guarnicion";
-        return plato;
-    }
-    if (tipoComida == "fria" && presupuesto<3000)
-    {
-        plato = "ensalada simple";
-        return plato;
-    }
-    if (tipoComida == "fria" && (presupuesto>3000 && presupuesto<7000))
-    {
-        plato = "Ensalada completa con proteína";
-        return plato;
-    }
-    if (tipoComida == "fria" && presupuesto>7000)
-    {
-        plato = "Tabla de fiambres y quesos";
-        return plato;
-    }
-    
-
-}
-public int CalcularTiempo()
-{
-    int tiempoestimado;
-    if (tipoComida == "Caliente" && cantidadPersonas=1)
-    {
-        tiempoestimado = 20;
-        return tiempoestimado;
-    }
-    if (tipoComida == "Caliente" && (cantidadPersonas>=2 && cantidadPersonas<=3))
-    {
-        tiempoestimado= 20;
-        return tiempoestimado;
-    }
-    if (tipoComida == "Caliente" && (cantidadPersonas>=4 && cantidadPersonas<=7))
-    {
-        tiempoestimado = 40;
-        return tiempoestimado;
-    }
-    if (tipoComida == "Caliente" && cantidadPersonas>=8)
-    {
-        tiempoestimado = 80;
-        return tiempoestimado;
-    }  
-    if (tipoComida == "Fria" && (cantidadPersonas>=1 && cantidadPersonas<=3 ))
-    {
-        tiempoestimado = 10;
-        return tiempoestimado;
-    }
-    if (tipoComida == "Fria" && (cantidadPersonas>=4 && cantidadPersonas<=7))
-    {
-        tiempoestimado= 20;
-        return tiempoestimado;
-    }
-    if (tipoComida == "Fria" && cantidadPersonas>=8)
-    {
-        tiempoestimado = 40;
-        return tiempoestimado;
-    }
-
-
-}
-public string DeterminarDificultad(){
-    string dificultad;
-    if ((presupuesto < 3000)  && (cantidadPersonas>=1 && cantidadPersonas <= 3))
-    {
-        dificultad = "Principiante";
-        return dificultad;
-    }
-    if ((presupuesto < 3000)  && (cantidadPersonas>=4 && cantidadPersonas <= 7))
-    {
-        dificultad = "intermedio";
-        return dificultad;
-    }if ((presupuesto > 3000 && presupuesto < 7000)  && (cantidadPersonas>=1 && cantidadPersonas <= 3))
-    {
-        dificultad = "intermedio";
-        return dificultad;
-    }if ((presupuesto > 3000 && presupuesto < 7000) && (cantidadPersonas>=4))
-    {
-        dificultad = "intermedio";
-        return dificultad;
-    }
-
-    if ((presupuesto > 7000 ) && (cantidadPersonas>1 && cantidadPersonas<7))
-    {
-        dificultad = "intermedio";
-        return dificultad;
-    }if ((presupuesto > 7000 ) && (cantidadPersonas>= 8))
-    {
-        dificultad = "avanzado";
-        return dificultad;
-    }
-
-
-   
-}
-public string GenerarSaludo(){
-    int horaActual= DateTime.Now.Hour;
-    if (horaActual >= 6 && horaActual < 12)
-    {
-        return "Buenos días ";
-    }
-    else if (horaActual >= 12 && horaActual < 20)
-    {
-        return "Buenas tardes";
-    }
-    else
-    {
-        return "Buenas noches";
-    }
-
-}
-
-}
-
-
-
-
-
-

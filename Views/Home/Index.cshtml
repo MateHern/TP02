@@ -1,9 +1,39 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Recetify";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<h1> asdajdasd </h1>
+<h2>¿Qué cocino hoy?</h2>
+
+<form method="post" action="/Home/GenerarReceta">
+
+    <div>
+        <h1>Nombre:</h1>
+        <input type="text" name="nombreCocinero" required />
+    </div>
+
+    <div>
+        <h1>Fecha de nacimiento:</h1>
+        <input type="date" name="fechaDeNacimiento" required />
+    </div>
+
+    <div>
+        <h1>Tipo de comida:</h1>
+        <br />
+        <input type="radio" name="tipoComida" value="Caliente" required /> Caliente
+        &nbsp;
+        <input type="radio" name="tipoComida" value="Fría" /> Fría
+    </div>
+
+    <div>
+        <h1>Presupuesto :</h1>
+        <input type="number" name="presupuesto" min="1" required />
+    </div>
+
+    <div>
+        <h1>Cantidad de personas:</h1>
+        <input type="number" name="cantidadPersonas" min="1" max="20" required />
+    </div>
+
+    <button type="submit">Generar receta</button>
+
+</form>

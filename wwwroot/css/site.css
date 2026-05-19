@@ -11,7 +11,13 @@ html {
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
+h3{
+  color: rgb(175, 151, 14);
+}
 
+h2{
+  color: rgb(175, 151, 14);
+}
 html {
   position: relative;
   min-height: 100%;
@@ -19,8 +25,14 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: rgb(13, 13, 187);
 }
-
+h1{
+  color: rgb(175, 151, 14);
+}
+input{
+  color: rgb(175, 151, 14);
+}
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
